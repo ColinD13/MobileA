@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FirstFragment">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="#C0C0C0">
+
+<!--        <Button-->
+<!--            android:id="@+id/button_first"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/next"-->
+<!--            />-->
+
+
+        <TextView
+            android:id="@+id/textview_first"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Colors"
+            android:textSize="60px"
+            android:layout_marginHorizontal="400px"
+            />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/red"
+                android:layout_width="500px"
+                android:layout_height="wrap_content"
+                android:hint="Red Channel"
+                android:maxLength="2"
+                android:textColor="#FF0000"
+                android:layout_marginHorizontal="250px"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/green"
+                android:layout_width="500px"
+                android:layout_height="wrap_content"
+                android:hint="Green Channel"
+                android:maxLength="2"
+                android:textColor="#00FF00"
+                android:layout_marginHorizontal="250px"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/blue"
+                android:layout_width="500px"
+                android:layout_height="wrap_content"
+                android:hint="Blue Channel"
+                android:maxLength="2"
+                android:textColor="#0000FF"
+                android:layout_marginHorizontal="250px"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:layout_marginHorizontal="400px"
+            />
+
+        <Button
+            android:id="@+id/button_make"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Make RGB Value" />
+
+        <TextView
+            android:id="@+id/showColor"
+            android:layout_width="match_parent"
+            android:layout_height="500px"
+            android:text="" />
+
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
