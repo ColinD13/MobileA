@@ -1,6 +1,7 @@
 package com.example.android.finalproject
 
 import android.os.Bundle
+import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 
@@ -11,6 +12,10 @@ class SubMenuActivity : AppCompatActivity() {
     private lateinit var selectedFoodTextView: TextView
     private lateinit var selectedFoodImageView: ImageView
     private lateinit var backButton: Button
+    private lateinit var addToOrderButton: Button
+
+    private var selectedFood: FoodItem? = null
+    private val orderList: MutableList<FoodItem> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,9 +23,8 @@ class SubMenuActivity : AppCompatActivity() {
 
         submenuTitleTextView = findViewById(R.id.submenu_title)
         foodGridView = findViewById(R.id.food_grid)
-        selectedFoodTextView = findViewById(R.id.selected_food)
-        selectedFoodImageView = findViewById(R.id.selected_food_image)
         backButton = findViewById(R.id.back_button)
+        addToOrderButton = findViewById(R.id.add_to_order_button)
 
         val submenuTitle = intent.getStringExtra("submenu_title")
         submenuTitleTextView.text = submenuTitle
@@ -36,15 +40,28 @@ class SubMenuActivity : AppCompatActivity() {
         val foodAdapter = FoodAdapter(this, foodItems)
         foodGridView.adapter = foodAdapter
 
-        foodGridView.onItemClickListener =
-            AdapterView.OnItemClickListener { _, _, position, _ ->
-                val selectedFood = foodItems[position]
-                selectedFoodTextView.text = "Selected Food: ${selectedFood.name}"
-                selectedFoodImageView.setImageResource(selectedFood.imageResId)
-            }
+
 
         backButton.setOnClickListener {
             finish()
         }
+
+        addToOrderButton.setOnClickListener {
+            if (selectedFood != null) {
+                orderList.add(selectedFood!!)
+                Toast.makeText(this, "Added to order", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "No food item selected", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        foodGridView.onItemClickListener =
+            AdapterView.OnItemClickListener { _, _, position, _ ->
+                val selectedFoodItem = foodItems[position]
+                selectedFoodTextView.text = "Selected Food: ${selectedFoodItem.name}"
+                selectedFood = selectedFoodItem
+            }
     }
+
+    // Rest of the code...
 }
